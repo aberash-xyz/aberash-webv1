@@ -1,2 +1,17 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script type="module">
+	import MainText from "../lib/MainText.svelte"
+</script>
+
+<div>
+	<MainText />
+</div>
+
+
+<style>
+	div {
+		height: 90vh;
+		width: 100vw;
+		font-size: 62.5%;
+		overflow: hidden;
+	}
+</style>
