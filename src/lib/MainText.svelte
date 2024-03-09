@@ -13,15 +13,15 @@
 			visible = true
 		}, 500)
 
-		const hideInterval = setTimeout(_ => {
-			// hide everything but first and last letter
-			collapse = true
-		}, 5000)
+		// const hideInterval = setTimeout(_ => {
+		// 	// hide everything but first and last letter
+		// 	collapse = true
+		// }, 5000)
 
-		return () => { 
-			clearInterval(showInterval)
-			clearInterval(hideInterval)
-		}
+		// return () => { 
+		// 	clearInterval(showInterval)
+		// 	clearInterval(hideInterval)
+		// }
 	})
 </script>
 
@@ -49,16 +49,24 @@
 
 <style>
 	div {
+		position: fixed;
+		z-index: 0;
+		top: 0;
+		left: 0;
 		height: 100%;
 		width: 100%;
 		display: flex;
-		align-items: center;
+		align-items: flex-end;
 		justify-content: center;
 		overflow: hidden;
+		z-index: 1;
+		/*REMEMBER THIS IS HERE, MIGHT HAVE TO REMOVE IN THE FUTURE*/
+		pointer-events: none;
 	}
 	h1 {
 		font-family: "Helvetica";
 		overflow: hidden;
+		color: var(--white);
 	}
 
 	span {

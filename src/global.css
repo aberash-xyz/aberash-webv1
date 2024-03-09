@@ -1,0 +1,21 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 62.5%;
+	background: var(--primary);
+	font-family: 'Soria';
+}
+
+:root {
+	--primary: #0d2818;
+	--white: #f0f0f0;
+	--text: #f8e4de;
+}
+
+@font-face {
+	font-family: 'Soria';
+	src: url('/fonts/soria-font.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
