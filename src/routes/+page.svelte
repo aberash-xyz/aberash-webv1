@@ -37,7 +37,7 @@
 				class="footer__item">contact</a
 			>
 			<a href="https://nostalgiabox.app" class="footer__item">nostalgiabox</a>
-			<a href="https://just-football.vercel.app" class="footer__item">football-village</a>
+			<a href="https://football-village.co" class="footer__item">football-village</a>
 		</div>
 
 		<p class="footer__item">c. 2024</p>
