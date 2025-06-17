@@ -15,9 +15,9 @@
 			const y = event.clientY - window.innerHeight / 2;
 
 			animate('.video-window', {
-				rotateX: -y / 70,
-				rotateY: x / 70,
-				duration: 350,
+				rotateX: -y / (window.innerWidth / 20),
+				rotateY: x / (window.innerHeight / 20),
+				duration: 550,
 				easing: 'easeInOutQuad'
 			});
 		});
@@ -135,12 +135,13 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-	}
-	.video-window:hover {
+		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
 	}
 	.video {
+		height: 100%;
+		width: 100%;
 		object-position: center;
-		object-fit: contain;
+		object-fit: cover;
 	}
 
 	.hero {
