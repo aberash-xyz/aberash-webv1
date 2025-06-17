@@ -63,6 +63,7 @@
 			playbackRate="0.2"
 			muted
 			autoplay
+			playsinline
 			loop
 		/>
 	</div>
@@ -131,6 +132,7 @@
 		min-width: 300px;
 		border-radius: 25rem 25rem 1rem 1rem;
 		justify-self: center;
+		margin: auto;
 		margin-bottom: 8rem;
 		display: flex;
 		align-items: center;
