@@ -48,7 +48,7 @@ html::-webkit-scrollbar-track {
 }
 
 html {
-	background: url('aberash_bg.png') center center repeat var(--primary);
+	background: url('/aberash_bg.png') center center repeat var(--primary);
 	background-size: contain;
 }
 @media (max-width: 800px) {
