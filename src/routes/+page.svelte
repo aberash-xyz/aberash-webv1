@@ -1,23 +1,52 @@
 <script type="module">
+	import { animate } from 'animejs';
 	import { onMount } from 'svelte';
 	let time = '00:00';
 
 	onMount(() => {
-		setTimeout(() => {
-			updateTime();
-		}, 1000);
+		updateTime();
+		trackMousePosition();
+		listenForMouseLeave();
 	});
+
+	const trackMousePosition = () => {
+		document.addEventListener('mousemove', (event) => {
+			const x = event.clientX - window.innerWidth / 2;
+			const y = event.clientY - window.innerHeight / 2;
+
+			animate('.video-window', {
+				rotateX: -y / 70,
+				rotateY: x / 70,
+				duration: 350,
+				easing: 'easeInOutQuad'
+			});
+		});
+	};
+
+	const listenForMouseLeave = () => {
+		document.addEventListener('mouseleave', () => {
+			animate('.video-window', {
+				rotateX: 0,
+				rotateY: 0,
+				duration: 550,
+				easing: 'easeInOutQuad'
+			});
+		});
+	};
 
 	const updateTime = () => {
 		const date = new Date();
 		const minutes = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
-		time = date.getHours() + ':' + minutes;
+		const seconds = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+		time = date.getHours() + ':' + minutes + ':' + seconds;
+		setTimeout(() => {
+			updateTime();
+		}, 1000);
 	};
 </script>
 
 <div class="container">
 	<div class="header">
-		<span class="header__item">Doing it</span>
 		<span class="header__item">40°42′51″ N / 74°00′21″ W</span>
 		<span class="header__item">{time}</span>
 	</div>
@@ -26,7 +55,17 @@
 
 	<h3 class="subtitle">finding the beauty inbetween</h3>
 
-	<img class="hero" src="hero.jpg" alt="field of flowers shot on film" />
+	<div class="video-window">
+		<video
+			class="video"
+			src="dreamy_flowers.mp4"
+			poster="hero.jpg"
+			playbackRate="0.2"
+			muted
+			autoplay
+			loop
+		/>
+	</div>
 
 	<h3 class="subtitle">and building things that matter</h3>
 
@@ -40,7 +79,7 @@
 			<a href="https://football-village.co" class="footer__item">football-village</a>
 		</div>
 
-		<p class="footer__item">c. 2024</p>
+		<p class="footer__item">c. 2025</p>
 	</footer>
 	<!-- <MainText /> -->
 	<!-- <MatterDemo /> -->
@@ -54,19 +93,22 @@
 		overflow: hidden;
 		margin: var(--margin);
 		color: var(--secondary);
+		position: relative;
+		height: auto;
+		/* height: calc(100vh - var(--margin) * 2); */
 	}
 	.title {
-		font-size: 30rem;
+		font-size: 20rem;
 		color: var(--secondary);
 		font-weight: 100;
 		text-align: center;
-		margin: 2.5rem 0 8rem 0;
+		margin: 2.5rem 0 0rem 0;
 	}
 	.subtitle {
-		font-size: 4rem;
+		font-size: 3.2rem;
 		text-align: center;
 		font-weight: 100;
-		margin: 6rem 0;
+		margin: 2rem 0;
 	}
 	.header,
 	.footer {
@@ -78,11 +120,36 @@
 		/* font: 2rem/1.5; */
 		font-size: 2rem;
 		line-height: 1.5;
+		padding: 0.4rem 0.8rem;
 	}
+	.video-window {
+		aspect-ratio: 5/6;
+		overflow: hidden;
+		width: 80%;
+		height: auto;
+		max-width: 550px;
+		min-width: 300px;
+		border-radius: 25rem 25rem 1rem 1rem;
+		justify-self: center;
+		margin-bottom: 8rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.video-window:hover {
+	}
+	.video {
+		object-position: center;
+		object-fit: contain;
+	}
+
 	.hero {
 		aspect-ratio: 16/9;
 		width: 100%;
 		border-radius: 3rem;
+	}
+	.footer {
+		width: calc(100%);
 	}
 	.footer__item {
 		font-size: 2rem;
