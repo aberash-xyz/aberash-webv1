@@ -3,14 +3,19 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 62.5%;
-	font-family: 'Soria';
+	font-family: 'Urbanist';
 }
 
 :root {
 	/* COLORS */
-	--secondary: #0d2818;
+	/*--secondary: #0d2818;
 	--primary: #f8e4de;
-	--text: #f8e4de;
+	--text: #f8e4de;*/
+
+	--secondary: #f0f0f0;
+	--primary: #1d1d1d;
+	--text: #f0f0f0;
+	--hover-color: #6320ee;
 
 	/* SPACING */
 	--margin: 2rem;
@@ -30,6 +35,30 @@ body {
 	src: url('/fonts/soria-font.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Urbanist';
+	src: url('/fonts/Urbanist/Urbanist-VariableFont_wght.woff2') format('woff2');
+	font-weight: 50 900;
+	font-stretch: 75% 125%;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Urbanist';
+	src: url('/fonts/Urbanist/Urbanist-Italic-VariableFont_wght.woff2') format('woff2');
+	font-weight: 100 900;
+	font-stretch: 75% 125%;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Source Serif';
+	src: url('/fonts/Source_Serif_4/sourceserif.woff2') format('woff2');
+	font-weight: 200 900;
+	font-stretch: 75% 125%;
+	font-style: italic;
 }
 
 html::-webkit-scrollbar {

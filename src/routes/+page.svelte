@@ -46,46 +46,18 @@
 </script>
 
 <div class="container">
-	<div class="header">
-		<span class="header__item">40°42′51″ N / 74°00′21″ W</span>
-		<span class="header__item">{time}</span>
-	</div>
-
-	<h1 class="title">aberash.</h1>
+	<h1 class="title">aberash<span class="title__period">.</span></h1>
 
 	<h3 class="subtitle">finding the beauty inbetween</h3>
 
-	<div class="video-window">
-		<video
-			class="video"
-			src="dreamy_flowers.mp4"
-			poster="hero.jpg"
-			playbackRate="0.2"
-			muted
-			autoplay
-			playsinline
-			loop
-		/>
-	</div>
-
 	<h3 class="subtitle">and building things that matter</h3>
 
-	<footer class="footer">
-		<div>
-			<a
-				href="https://docs.google.com/forms/d/14tRWW6ITtClapziqQcGMrS5fNtZjVp3pZ0z_qWG1SJ0/"
-				class="footer__item">contact</a
-			>
-			<a href="https://nostalgiabox.app" class="footer__item">nostalgiabox</a>
-			<a href="https://football-village.co" class="footer__item">football-village</a>
-		</div>
-
-		<p class="footer__item">c. 2025</p>
-	</footer>
-	<!-- <MainText /> -->
-	<!-- <MatterDemo /> -->
-	<!-- <PixiDemo /> -->
-	<!-- <PixiMatter /> -->
+	<div class="links-container">
+		<a class="link" href="/mood"><span class="hover-block" />(mood)</a>
+		<a class="link" href="https://instagram.com/aberash.xyz"
+			><span class="hover-block" />(@aberash.studio)</a
+		>
+	</div>
 </div>
 
 <style>
@@ -96,108 +68,112 @@
 		color: var(--secondary);
 		position: relative;
 		height: auto;
-		/* height: calc(100vh - var(--margin) * 2); */
 	}
 	.title {
-		font-size: 20rem;
+		font-size: 10rem;
 		color: var(--secondary);
-		font-weight: 100;
+		font-weight: 500;
+		letter-spacing: -1.4px;
 		text-align: center;
 		margin: 2.5rem 0 0rem 0;
 	}
+	.title__period {
+		display: inline-block;
+		transform-origin: center center;
+	}
 	.subtitle {
-		font-size: 3.2rem;
+		font-size: 1.8rem;
+		font-style: italic;
 		text-align: center;
-		font-weight: 100;
+		font-weight: 300;
 		margin: 2rem 0;
 	}
-	.header,
-	.footer {
+	.links-container {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-	}
-	.header__item {
-		/* font: 2rem/1.5; */
-		font-size: 2rem;
-		line-height: 1.5;
-		padding: 0.4rem 0.8rem;
-	}
-	.video-window {
-		aspect-ratio: 5/6;
-		overflow: hidden;
-		width: 80%;
-		height: auto;
-		max-width: 550px;
-		min-width: 300px;
-		border-radius: 25rem 25rem 1rem 1rem;
-		justify-self: center;
+		gap: 8px;
+		max-width: 400px;
 		margin: auto;
-		margin-bottom: 8rem;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+		margin-top: 64px;
 	}
-	.video {
+	.link {
+		display: inline-block;
+		position: relative;
+		color: inherit;
+		font-size: 1.6rem;
+		text-decoration: none;
+		padding: 0.4rem 0.8rem;
+		overflow: hidden;
+	}
+	.hover-block {
 		height: 100%;
 		width: 100%;
-		object-position: center;
-		object-fit: cover;
+		background: var(--hover-color);
+		position: absolute;
+		left: -100%;
+		transition: ease-in-out 0.3s;
 	}
-
-	.hero {
-		aspect-ratio: 16/9;
-		width: 100%;
-		border-radius: 3rem;
-	}
-	.footer {
-		width: calc(100%);
-	}
-	.footer__item {
-		font-size: 2rem;
-		line-height: 1.5;
-		text-decoration: none;
-		color: inherit;
-		margin-right: var(--margin);
+	.link:hover .hover-block {
+		left: 100%;
 	}
 
 	@media (max-width: 1200px) {
 		.title {
-			font-size: 24rem;
+			font-size: 10rem;
 		}
 		.subtitle {
-			font-size: 3.2rem;
-		}
-		.header__item,
-		.footer__item {
+			font-family: 'Source Serif';
 			font-size: 1.8rem;
+			font-style: italic;
 		}
 	}
 
 	@media (max-width: 800px) {
 		.title {
-			font-size: 18rem;
+			font-size: 9rem;
 		}
 		.subtitle {
-			font-size: 2.4rem;
-		}
-		.header__item,
-		.footer__item {
-			font-size: 1.6rem;
+			font-family: 'Source Serif';
+			font-size: 1.8rem;
 		}
 	}
 
 	@media (max-width: 577px) {
 		.title {
-			font-size: 11rem;
+			font-size: 9rem;
 		}
 		.subtitle {
-			font-size: 2rem;
+			font-family: 'Source Serif';
+			font-size: 1.8rem;
+			font-style: italic;
 		}
-		.header__item,
-		.footer__item {
-			font-size: 1.6rem;
+	}
+	@keyframes pulse {
+		0% {
+			transform: scale(1);
+			opacity: 1;
+		}
+		50% {
+			opacity: 0;
+			transform: scale(1.1);
+		}
+		100% {
+			transform: scale(1);
+		}
+	}
+	@keyframes blink {
+		0% {
+			opacity: 1;
+		}
+		25% {
+			opacity: 0;
+		}
+		50% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 1;
 		}
 	}
 </style>
