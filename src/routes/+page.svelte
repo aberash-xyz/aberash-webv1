@@ -54,7 +54,7 @@
 
 	<div class="links-container">
 		<a class="link" href="/mood"><span class="hover-block" />(mood)</a>
-		<a class="link" href="https://instagram.com/aberash.xyz"
+		<a class="link" href="https://instagram.com/aberash.studio"
 			><span class="hover-block" />(@aberash.studio)</a
 		>
 	</div>
