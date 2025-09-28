@@ -10,20 +10,20 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/adapter-vercel": "^3.0.1",
-		"@sveltejs/kit": "^1.5.0",
-		"eslint": "^8.28.0",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-svelte": "^2.26.0",
-		"prettier": "^2.8.0",
-		"prettier-plugin-svelte": "^2.8.1",
-		"svelte": "^3.54.0",
-		"vite": "^4.3.0"
+		"@sveltejs/adapter-auto": "^6.1.0",
+		"@sveltejs/adapter-vercel": "^5.10.2",
+		"@sveltejs/kit": "^2.43.5",
+		"eslint": "^9.36.0",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-svelte": "^3.12.4",
+		"prettier": "^3.6.2",
+		"prettier-plugin-svelte": "^3.4.0",
+		"svelte": "^5.39.0",
+		"vite": "^6.3.0"
 	},
 	"type": "module",
 	"engines": {
-		"node": "20.x"
+		"node": "22.x"
 	},
 	"dependencies": {
 		"animejs": "^4.0.2",
