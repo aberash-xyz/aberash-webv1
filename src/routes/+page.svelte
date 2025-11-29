@@ -137,7 +137,7 @@
 		transform-origin: center center;
 	}
 	.subtitle {
-		font-size: 2.4rem;
+		font-size: 2rem;
 		font-style: italic;
 		text-align: center;
 		font-weight: 200;
