@@ -21,6 +21,10 @@
 </div>
 
 <style>
+	.container {
+		padding-top: calc(2 * var(--margin));
+		box-sizing: border-box;
+	}
 	.grid {
 		padding: 1.2rem 1.6rem;
 		display: grid;

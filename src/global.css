@@ -3,7 +3,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 62.5%;
-	font-family: 'Urbanist';
+	font-family: Arial;
 }
 
 :root {
@@ -20,7 +20,7 @@ body {
 	/* SPACING */
 	--margin: 2rem;
 	--small: 1.2rem;
-	--extraSmall: 0.8rem;
+	--extra-small: 0.8rem;
 	--medium: 1.6rem;
 	--large: 2.4rem;
 	--extra-large: 4.8rem;
@@ -77,9 +77,17 @@ html::-webkit-scrollbar-track {
 }
 
 html {
-	background: url('/aberash_bg.png') center center repeat var(--primary);
+	/*background: url('/aberash_bg.png') center center repeat var(--primary);*/
+	background: var(--primary);
 	background-size: contain;
 }
 @media (max-width: 800px) {
 	/* font-size: 60%; */
+}
+
+h1,
+h2,
+h3,
+h4 {
+	margin: 0;
 }

@@ -1,39 +1,41 @@
 <script>
 	import '../global.css';
 
-	import { animate } from 'animejs';
+	import { createTimeline, stagger, splitText, createAnimatable } from 'animejs';
+	import Footer from '$lib/Footer.svelte';
 	import { onMount } from 'svelte';
 	let time = '00:00';
+	let animatableSquare;
 
 	onMount(() => {
+		animatableSquare = createAnimatable('.shadow', {
+			x: 500, // Define the x duration to be 500ms
+			y: 500, // Define the y duration to be 500ms
+			ease: 'out(3)'
+		});
 		updateTime();
-		trackMousePosition();
-		listenForMouseLeave();
+
+		// animateGeoCoordinates();
+
+		window.addEventListener('mousemove', onMouseMove);
 	});
 
-	const trackMousePosition = () => {
-		document.addEventListener('mousemove', (event) => {
-			const x = event.clientX - window.innerWidth / 2;
-			const y = event.clientY - window.innerHeight / 2;
-
-			animate('.video-window', {
-				rotateX: -y / (window.innerWidth / 20),
-				rotateY: x / (window.innerHeight / 20),
-				duration: 550,
-				easing: 'easeInOutQuad'
-			});
+	const animateGeoCoordinates = () => {
+		splitText('.geocoordinates', {
+			chars: `<span class="char-3d">
+				<em class="face face-top">{value}</em>
+				<em class="face face-front">{value}</em>
+				<em class="face face-bottom">{value}</em>
+			</span>`
 		});
-	};
 
-	const listenForMouseLeave = () => {
-		document.addEventListener('mouseleave', () => {
-			animate('.video-window', {
-				rotateX: 0,
-				rotateY: 0,
-				duration: 550,
-				easing: 'easeInOutQuad'
-			});
-		});
+		const charsStagger = stagger(100, { start: 0 });
+
+		createTimeline({ defaults: { ease: 'linear', loop: true, duration: 750 } })
+			.add('.char-3d', { rotateX: -90 }, charsStagger)
+			.add('.char-3d .face-top', { opacity: [0.5, 0] }, charsStagger)
+			.add('.char-3d .face-front', { opacity: [1, 0.5] }, charsStagger)
+			.add('.char-3d .face-bottom', { opacity: [0.5, 1] }, charsStagger);
 	};
 
 	const updateTime = () => {
@@ -45,45 +47,44 @@
 			updateTime();
 		}, 1000);
 	};
+
+	const onMouseMove = (e) => {
+		animatableSquare.x(e.clientX); // Animate the x value in 500ms
+		animatableSquare.y(e.clientY); // Animate the y value in 500ms
+	};
 </script>
 
-<div class="header">
-	<span class="header__item">40°42′51″ N / 74°00′21″ W</span>
-	<span class="header__item">{time}</span>
-</div>
-<slot />
-<footer class="footer">
-	<div>
-		<a
-			href="https://docs.google.com/forms/d/14tRWW6ITtClapziqQcGMrS5fNtZjVp3pZ0z_qWG1SJ0/"
-			class="footer__item link"><span class="hover-block" />contact</a
-		>
-		<a href="https://nostalgiabox.app" class="footer__item link"
-			><span class="hover-block" />nostalgiabox</a
-		>
-		<a href="https://football-village.co" class="footer__item link"
-			><span class="hover-block" />football-village</a
-		>
+<div class="root">
+	<div class="shadow"></div>
+	<div class="header">
+		<span class="header__item geocoordinates">40°42′51″ N / 74°00′21″ W</span>
+		<span class="header__item">{time}</span>
 	</div>
-
-	<p class="footer__item">c. 2025</p>
-</footer>
+	<slot />
+	<Footer />
+</div>
 
 <style>
-	.header,
-	.footer {
+	.root {
+		width: 100vw;
+	}
+	.shadow {
+		height: 16px;
+		width: 24px;
+		background-color: var(--text);
+	}
+	.header {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
 		color: var(--text);
-		width: 100vw;
-	}
-	.footer {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 20px;
 		position: fixed;
-		bottom: 0;
+		top: 0;
 		left: 0;
 		right: 0;
-		padding: 0 8px;
 	}
 	.header__item {
 		font-size: 1.6rem;
@@ -91,54 +92,50 @@
 		padding: 0.4rem 0.8rem;
 		min-width: 50px;
 	}
-	.footer {
-		width: calc(100%);
-	}
-	.footer__item {
-		font-size: 1.6rem;
-		letter-spacing: -0.3px;
-		line-height: 1.5;
-		text-decoration: none;
-		color: inherit;
-		margin-right: var(--margin);
-	}
-	.link {
+
+	.char-3d {
 		display: inline-block;
 		position: relative;
-		color: inherit;
-		font-size: 1.6rem;
-		text-decoration: none;
-		padding: 0.4rem 0.8rem;
-		overflow: hidden;
+		transform-style: preserve-3d;
+		perspective: 1000px;
 	}
-	.hover-block {
-		height: 100%;
-		width: 100%;
-		background: var(--hover-color);
+
+	.char-3d .face {
 		position: absolute;
-		left: -100%;
-		transition: ease-in-out 0.3s;
+		top: 0;
+		left: 0;
+		font-style: normal;
+		backface-visibility: hidden;
 	}
-	.link:hover .hover-block {
-		left: 100%;
+
+	.char-3d .face-front {
+		position: relative;
 	}
+
+	.char-3d .face-top {
+		transform: rotateX(90deg) translateZ(0.5em);
+		transform-origin: top center;
+	}
+
+	.char-3d .face-bottom {
+		transform: rotateX(-90deg) translateZ(0.5em);
+		transform-origin: bottom center;
+	}
+
 	@media (max-width: 1200px) {
-		.header__item,
-		.footer__item {
+		.header__item {
 			font-size: 1.6rem;
 		}
 	}
 
 	@media (max-width: 800px) {
-		.header__item,
-		.footer__item {
+		.header__item {
 			font-size: 1.6rem;
 		}
 	}
 
 	@media (max-width: 577px) {
-		.header__item,
-		.footer__item {
+		.header__item {
 			font-size: 1.6rem;
 		}
 	}

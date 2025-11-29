@@ -26,7 +26,7 @@
 		"node": "22.x"
 	},
 	"dependencies": {
-		"animejs": "^4.0.2",
+		"animejs": "^4.2.2",
 		"matter-js": "^0.19.0",
 		"pixi.js": "^8.0.1"
 	}
