@@ -66,7 +66,7 @@
 				<a href="https://football-village.co" class="mobile-nav-link" on:click={closeMenu}>
 					(football-village)
 				</a>
-				<p class="mobile-nav-link">c. 2025</p>
+				<p class="mobile-nav-link">c. 2026</p>
 			</div>
 		</nav>
 	</div>

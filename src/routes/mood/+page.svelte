@@ -7,7 +7,11 @@
 		'https://i.pinimg.com/736x/f5/ac/7a/f5ac7ada03d1b90213808aa0cb751d2b.jpg',
 		'https://i.pinimg.com/736x/37/ff/d4/37ffd48e6a6e27f7082bfcc27083acc5.jpg',
 		'https://i.pinimg.com/736x/7a/4f/5d/7a4f5dfcdd626f0d6940a62fddd5d12f.jpg',
-		'https://i.pinimg.com/1200x/69/4b/72/694b728fef709530961d56646692d6e1.jpg'
+		'https://i.pinimg.com/1200x/69/4b/72/694b728fef709530961d56646692d6e1.jpg',
+    	'https://i.pinimg.com/control1/736x/e6/58/45/e658459c09faff1e7bcf17d734d5cfae.jpg',
+    	'https://i.pinimg.com/736x/13/1d/12/131d12bdf13b7f6b10415d56fe786e67.jpg',
+    	'https://i.pinimg.com/control1/736x/0d/fc/da/0dfcdaafabbfe78a8d08713c379a0921.jpg',
+    	'https://i.pinimg.com/control1/736x/87/1c/58/871c58276410ec463ad25a7d6c817563.jpg'
 	];
 </script>
 
