@@ -34,7 +34,7 @@
 	<a href="https://football-village.co" class="footer__item link"
 		><span class="hover-block" />(football-village)</a
 	>
-	<p class="footer__item">c. 2025</p>
+	<p class="footer__item">c. 2026</p>
 </footer>
 
 <!-- Mobile Hamburger / Close Button -->
