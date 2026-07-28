@@ -2,8 +2,10 @@
 	import { onMount } from 'svelte';
 	import { stagger, animate } from 'animejs';
 	import { fade, fly } from 'svelte/transition';
+	import { cubicIn, cubicOut } from 'svelte/easing';
 
 	let mobileMenuOpen = false;
+	let year = new Date().getFullYear();
 
 	const toggleMenu = () => {
 		mobileMenuOpen = !mobileMenuOpen;
@@ -14,6 +16,9 @@
 	};
 
 	onMount(() => {
+		// re-read on the client — a cached SSR response can outlive the year it was rendered in
+		year = new Date().getFullYear();
+
 		animate('.footer__item', {
 			opacity: [0, 1],
 			duration: 750,
@@ -31,10 +36,10 @@
 	<a href="https://nostalgiabox.app" class="footer__item link"
 		><span class="hover-block" />(nostalgiabox)</a
 	>
-	<a href="https://football-village.co" class="footer__item link"
-		><span class="hover-block" />(football-village)</a
+	<a href="https://instagram.com/aberash.studio" class="footer__item link"
+		><span class="hover-block" />(@aberash.studio)</a
 	>
-	<p class="footer__item">c. 2026</p>
+	<p class="footer__item">c. {year}</p>
 </footer>
 
 <!-- Mobile Hamburger / Close Button -->
@@ -50,8 +55,18 @@
 
 <!-- Mobile Full-Page Nav -->
 {#if mobileMenuOpen}
-	<div class="mobile-nav-overlay" on:click={closeMenu} transition:fade={{ duration: 300 }}>
-		<nav class="mobile-nav" on:click|stopPropagation transition:fly={{ x: -1000, duration: 300 }}>
+	<div
+		class="mobile-nav-overlay"
+		on:click={closeMenu}
+		in:fade={{ duration: 300 }}
+		out:fade={{ duration: 650 }}
+	>
+		<nav
+			class="mobile-nav"
+			on:click|stopPropagation
+			in:fly={{ x: -1000, duration: 400, easing: cubicOut }}
+			out:fly={{ x: -1000, duration: 600, easing: cubicIn }}
+		>
 			<div class="mobile-nav-links">
 				<a
 					href="https://docs.google.com/forms/d/14tRWW6ITtClapziqQcGMrS5fNtZjVp3pZ0z_qWG1SJ0/"
@@ -63,10 +78,14 @@
 				<a href="https://nostalgiabox.app" class="mobile-nav-link" on:click={closeMenu}>
 					(nostalgiabox)
 				</a>
-				<a href="https://football-village.co" class="mobile-nav-link" on:click={closeMenu}>
-					(football-village)
+				<a
+					href="https://instagram.com/aberash.studio"
+					class="mobile-nav-link"
+					on:click={closeMenu}
+				>
+					(@aberash.studio)
 				</a>
-				<p class="mobile-nav-link">c. 2026</p>
+				<p class="mobile-nav-link">c. {year}</p>
 			</div>
 		</nav>
 	</div>
@@ -89,8 +108,9 @@
 	}
 
 	.footer__item {
-		font-size: 1.6rem;
-		letter-spacing: -0.3px;
+		font-family: var(--font-mono);
+		font-size: 1.4rem;
+		letter-spacing: 0.02em;
 		line-height: 1.5;
 		text-decoration: none;
 		color: inherit;
@@ -102,7 +122,8 @@
 		display: inline-block;
 		position: relative;
 		color: inherit;
-		font-size: 1.6rem;
+		font-family: var(--font-mono);
+		font-size: 1.4rem;
 		text-decoration: none;
 		padding: 0.4rem 0.8rem;
 		overflow: hidden;
@@ -164,7 +185,7 @@
 	/* Animate to X when open */
 	.mobile-menu-toggle.open .line-1 {
 		transform: rotate(45deg);
-		background-color: black;
+		background-color: var(--text);
 	}
 
 	.mobile-menu-toggle.open .line-2 {
@@ -173,7 +194,7 @@
 
 	.mobile-menu-toggle.open .line-3 {
 		transform: rotate(-45deg);
-		background-color: black;
+		background-color: var(--text);
 	}
 
 	/* Mobile Navigation Overlay */
@@ -192,7 +213,7 @@
 		position: relative;
 		width: 100%;
 		height: 100%;
-		background: white;
+		background: #0e1f4a;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -206,8 +227,9 @@
 	}
 
 	.mobile-nav-link {
-		font-size: 2.4rem;
-		color: black;
+		font-family: var(--font-mono);
+		font-size: 2.2rem;
+		color: var(--text);
 		text-decoration: none;
 		padding: 1rem 2rem;
 	}

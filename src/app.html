@@ -1,9 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="background-color: #080a12; color-scheme: dark">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favi.png" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="theme-color" content="#080a12" />
+		<style>
+			/* first paint, before global.css loads — no white flash */
+			body {
+				margin: 0;
+				background-color: #080a12;
+				background-image: radial-gradient(
+					120% 90% at 15% 90%,
+					#d5622a 0%,
+					#3a2440 30%,
+					#0a1230 60%,
+					#080a12 100%
+				);
+			}
+		</style>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

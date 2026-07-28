@@ -3,6 +3,7 @@
 
 	import { createTimeline, stagger, splitText, createAnimatable } from 'animejs';
 	import Footer from '$lib/Footer.svelte';
+	import GradientBackground from '$lib/GradientBackground.svelte';
 	import { onMount } from 'svelte';
 	let time = '00:00';
 	let animatableSquare;
@@ -54,6 +55,8 @@
 	};
 </script>
 
+<GradientBackground />
+
 <div class="root">
 	<div class="shadow"></div>
 	<div class="header">
@@ -67,6 +70,8 @@
 <style>
 	.root {
 		width: 100vw;
+		position: relative;
+		z-index: 2;
 	}
 	.shadow {
 		height: 16px;
@@ -87,7 +92,9 @@
 		right: 0;
 	}
 	.header__item {
-		font-size: 1.6rem;
+		font-family: var(--font-mono);
+		font-size: 1.4rem;
+		letter-spacing: 0.02em;
 		line-height: 1.5;
 		padding: 0.4rem 0.8rem;
 		min-width: 50px;
@@ -124,19 +131,19 @@
 
 	@media (max-width: 1200px) {
 		.header__item {
-			font-size: 1.6rem;
+			font-size: 1.4rem;
 		}
 	}
 
 	@media (max-width: 800px) {
 		.header__item {
-			font-size: 1.6rem;
+			font-size: 1.3rem;
 		}
 	}
 
 	@media (max-width: 577px) {
 		.header__item {
-			font-size: 1.6rem;
+			font-size: 1.1rem;
 		}
 	}
 </style>

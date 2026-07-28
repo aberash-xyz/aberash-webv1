@@ -58,6 +58,7 @@
 		z-index: 1;
 	}
 	.title__link {
+		font-family: var(--font-mono);
 		color: inherit;
 		text-decoration: none;
 		cursor: pointer;

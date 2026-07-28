@@ -1,6 +1,5 @@
 <script type="module">
 	import { animate, splitText, createTimeline, stagger } from 'animejs';
-	import FloatingBoxes from '$lib/FloatingBoxes.svelte';
 	import { onMount } from 'svelte';
 	let time = '00:00';
 
@@ -69,33 +68,18 @@
 			},
 			'-=100'
 		);
-		timeline.add('.decorative-box', {
-			opacity: {
-				from: 0,
-				to: 1
-			},
-			delay: stagger(300, { start: 500 })
-		});
 	});
 </script>
-
-<FloatingBoxes />
 
 <div class="container">
 	<div class="main-center">
 		<h1 class="title">aberash<span class="title__period">.</span></h1>
-		<h3 class="subtitle">finding the beauty inbetween <br /> and building things that matter</h3>
+		<h3 class="subtitle">finding the beauty inbetween</h3>
 		<div class="links-container">
 			<a class="link" href="/mood"><span class="hover-block" />(mood)</a>
-			<a class="link" href="https://instagram.com/aberash.studio"
-				><span class="hover-block" />(@aberash.studio)</a
-			>
+			<span class="link link--pending">(lab-coming.soon)</span>
 		</div>
 	</div>
-
-	<div class="decorative-box box-1"></div>
-	<div class="decorative-box box-2"></div>
-	<div class="decorative-box box-3"></div>
 </div>
 
 <style>
@@ -125,10 +109,13 @@
 		gap: var(--extra-large);
 	}
 	.title {
-		font-size: 10rem;
+		font-family: var(--font-display);
+		font-size: 14rem;
 		color: var(--secondary);
-		font-weight: 600;
-		letter-spacing: -1.4px;
+		font-weight: 400;
+		font-style: italic;
+		letter-spacing: 0;
+		line-height: 0.9;
 		text-align: center;
 		opacity: 0;
 	}
@@ -137,10 +124,13 @@
 		transform-origin: center center;
 	}
 	.subtitle {
-		font-size: 2rem;
-		font-style: italic;
+		font-family: var(--font-mono);
+		font-size: 1.5rem;
+		font-style: normal;
 		text-align: center;
-		font-weight: 200;
+		font-weight: 400;
+		letter-spacing: 0.02em;
+		line-height: 1.6;
 		opacity: 0;
 	}
 	.links-container {
@@ -155,11 +145,13 @@
 		display: inline-block;
 		position: relative;
 		color: inherit;
-		font-size: 1.6rem;
+		font-family: var(--font-mono);
+		font-size: 1.4rem;
 		text-decoration: none;
 		padding: 0.4rem 0.8rem;
 		overflow: hidden;
-		font-weight: 200;
+		font-weight: 400;
+		letter-spacing: 0.02em;
 		text-align: center;
 		opacity: 0;
 	}
@@ -171,37 +163,21 @@
 		left: -100%;
 		transition: ease-in-out 0.3s;
 	}
-	.decorative-box {
-		height: 106px;
-		width: 133px;
-		background: var(--text);
-		opacity: 0;
-	}
-	.box-1 {
-		transform: scale(0.25);
-		grid-row: 2/2;
-		grid-column: 4/4;
-	}
-	.box-2 {
-		transform: scale(0.5);
-		grid-row: 7/7;
-		grid-column: 2/2;
-	}
-	.box-3 {
-		grid-row: 6/6;
-		grid-column: 9/9;
-	}
 	.link:hover .hover-block {
 		left: 100%;
+	}
+	/* placeholder until the lab exists — not clickable */
+	.link--pending {
+		cursor: default;
+		opacity: 0;
 	}
 
 	@media (max-width: 1200px) {
 		.title {
-			font-size: 10rem;
+			font-size: 14rem;
 		}
 		.subtitle {
-			font-size: 1.8rem;
-			font-style: italic;
+			font-size: 1.4rem;
 		}
 	}
 
@@ -210,13 +186,16 @@
 			grid-template-columns: repeat(5, 1fr);
 		}
 		.main-center {
-			grid-column: 2/6;
+			grid-column: 1/6;
+			justify-self: stretch;
+			padding: 0 var(--margin);
+			box-sizing: border-box;
 		}
 		.title {
-			font-size: 9rem;
+			font-size: 12rem;
 		}
 		.subtitle {
-			font-size: 1.8rem;
+			font-size: 1.3rem;
 		}
 	}
 
@@ -225,25 +204,16 @@
 			grid-template-columns: repeat(3, 1fr);
 		}
 		.title {
-			font-size: 6rem;
+			font-size: 8.5rem;
 		}
 		.main-center {
-			align-self: none;
-			justify-self: none;
-			grid-column: 2/4;
-		}
-		.box-2 {
-			grid-column: 1/1;
-			transform: scale(0.4);
-		}
-		.box-3 {
-			grid-column: 4/4;
-			transform: scale(0.8);
-			display: none;
+			grid-column: 1/4;
+			justify-self: stretch;
+			padding: 0 var(--margin);
+			box-sizing: border-box;
 		}
 		.subtitle {
-			font-size: 1.8rem;
-			font-style: italic;
+			font-size: 1.3rem;
 		}
 	}
 	@keyframes pulse {

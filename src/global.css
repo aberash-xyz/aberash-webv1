@@ -12,9 +12,9 @@ body {
 	--primary: #f8e4de;
 	--text: #f8e4de;*/
 
-	--secondary: #f0f0f0;
-	--primary: #1d1d1d;
-	--text: #f0f0f0;
+	--secondary: #f2f0ea;
+	--primary: #080a12;
+	--text: #f2f0ea;
 	--hover-color: #6320ee;
 
 	/* SPACING */
@@ -28,6 +28,34 @@ body {
 
 	/* TEXT */
 	--text-lg: 2rem/1.5;
+
+	/* TYPE */
+	--font-display: 'Alumni Sans Pinstripe', 'Urbanist', sans-serif;
+	--font-mono: 'Space Mono', ui-monospace, monospace;
+}
+
+@font-face {
+	font-family: 'Alumni Sans Pinstripe';
+	src: url('/fonts/AlumniSansPinstripe-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Alumni Sans Pinstripe';
+	src: url('/fonts/AlumniSansPinstripe-Italic.woff2') format('woff2');
+	font-weight: 400;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Space Mono';
+	src: url('/fonts/SpaceMono-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 
 @font-face {
@@ -55,7 +83,7 @@ body {
 
 @font-face {
 	font-family: 'Source Serif';
-	src: url('/fonts/Source_Serif_4/sourceserif.woff2') format('woff2');
+	src: url('/fonts/Source_Serif_4/sourceserif') format('woff2');
 	font-weight: 200 900;
 	font-stretch: 75% 125%;
 	font-style: italic;
