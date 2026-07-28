@@ -1,12 +1,22 @@
 <script>
 	import '../global.css';
 
+	import { page } from '$app/stores';
 	import { createTimeline, stagger, splitText, createAnimatable } from 'animejs';
 	import Footer from '$lib/Footer.svelte';
 	import GradientBackground from '$lib/GradientBackground.svelte';
 	import { onMount } from 'svelte';
 	let time = '00:00';
 	let animatableSquare;
+
+	// scrapers need absolute URLs — hardcoded because $page.url.origin
+	// becomes http://sveltekit-prerender if these routes are ever prerendered
+	const SITE = 'https://www.aberash.xyz';
+	const TITLE = 'aberash.';
+	const DESCRIPTION = 'finding the beauty inbetween and building things that matter';
+	const OG_IMAGE = `${SITE}/og.png`;
+
+	$: canonical = `${SITE}${$page.url.pathname}`;
 
 	onMount(() => {
 		animatableSquare = createAnimatable('.shadow', {
@@ -54,6 +64,30 @@
 		animatableSquare.y(e.clientY); // Animate the y value in 500ms
 	};
 </script>
+
+<svelte:head>
+	<title>{TITLE}</title>
+	<meta name="description" content={DESCRIPTION} />
+	<link rel="canonical" href={canonical} />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:site_name" content={TITLE} />
+	<meta property="og:title" content={TITLE} />
+	<meta property="og:description" content={DESCRIPTION} />
+	<meta property="og:url" content={canonical} />
+	<meta property="og:image" content={OG_IMAGE} />
+	<meta property="og:image:secure_url" content={OG_IMAGE} />
+	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:width" content="2400" />
+	<meta property="og:image:height" content="1272" />
+	<meta property="og:image:alt" content={TITLE} />
+
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content={TITLE} />
+	<meta name="twitter:description" content={DESCRIPTION} />
+	<meta name="twitter:image" content={OG_IMAGE} />
+	<meta name="twitter:image:alt" content={TITLE} />
+</svelte:head>
 
 <GradientBackground />
 
