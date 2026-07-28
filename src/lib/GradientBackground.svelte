@@ -112,8 +112,8 @@
 		const t0 = performance.now();
 		let raf;
 		const frame = (now) => {
-			mx += (tmx - mx) * 0.07;
-			my += (tmy - my) * 0.07;
+			mx += (tmx - mx) * 0.05;
+			my += (tmy - my) * 0.05;
 			gl.uniform1f(uT, REDUCE ? 12.0 : (now - t0) / 1000);
 			gl.uniform1f(uA, W / H);
 			gl.uniform2f(uM, mx, my);
