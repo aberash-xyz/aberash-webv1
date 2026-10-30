@@ -103,11 +103,15 @@
 
 <style>
 	.root {
-		width: 100vw;
+		width: 100%;
 		position: relative;
 		z-index: 2;
 	}
 	.shadow {
+		/* fixed so it doesn't add 16px of page height (scrollbars → gaps in safari) */
+		position: fixed;
+		top: 0;
+		left: 0;
 		height: 16px;
 		width: 24px;
 		background-color: var(--text);
