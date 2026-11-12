@@ -36,8 +36,8 @@
 	<a href="https://nostalgiabox.app" class="footer__item link"
 		><span class="hover-block" />(nostalgiabox)</a
 	>
-	<a href="https://instagram.com/aberash.studio" class="footer__item link"
-		><span class="hover-block" />(@aberash.studio)</a
+	<a href="https://syniasports.com" class="footer__item link"
+		><span class="hover-block" />(syniasports)</a
 	>
 	<p class="footer__item">c. {year}</p>
 </footer>
@@ -79,11 +79,11 @@
 					(nostalgiabox)
 				</a>
 				<a
-					href="https://instagram.com/aberash.studio"
+					href="https://syniasports.com"
 					class="mobile-nav-link"
 					on:click={closeMenu}
 				>
-					(@aberash.studio)
+					(syniasports)
 				</a>
 				<p class="mobile-nav-link">c. {year}</p>
 			</div>
