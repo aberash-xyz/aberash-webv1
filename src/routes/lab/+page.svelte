@@ -2,7 +2,8 @@
 	const labs = [
 		{ title: 'blob', kind: 'shader', year: '2026', href: '/lab/blob', a: '#6320ee', b: '#120a2e' },
 		{ title: 'swarm', kind: 'particles', year: '2026', href: '/lab/swarm', a: '#fff0dc', b: '#3b1d8f' },
-		{ title: 'paintball', kind: 'interaction', year: '2026', href: '/lab/paintball', a: '#ff5a8a', b: '#2a1466' }
+		{ title: 'paintball', kind: 'interaction', year: '2026', href: '/lab/paintball', a: '#ff5a8a', b: '#2a1466' },
+		{ title: 'fluid', kind: 'simulation', year: '2026', href: '/lab/fluid', a: '#9b5cff', b: '#03040e' }
 	];
 
 	// figma v2 uneven grid on 4 columns: [2 1 1] [1 1 2] [3 1], repeating
