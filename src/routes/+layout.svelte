@@ -4,7 +4,6 @@
 	import { page } from '$app/stores';
 	import { createTimeline, stagger, splitText, createAnimatable } from 'animejs';
 	import Footer from '$lib/Footer.svelte';
-	import GradientBackground from '$lib/GradientBackground.svelte';
 	import { onMount } from 'svelte';
 	let time = '00:00';
 	let animatableSquare;
@@ -89,8 +88,6 @@
 	<meta name="twitter:image:alt" content={TITLE} />
 </svelte:head>
 
-<GradientBackground />
-
 <div class="root">
 	<div class="shadow"></div>
 	<div class="header">
@@ -128,6 +125,7 @@
 		top: 0;
 		left: 0;
 		right: 0;
+		z-index: 10;
 	}
 	.header__item {
 		font-family: var(--font-mono);

@@ -33,12 +33,6 @@
 		href="https://docs.google.com/forms/d/14tRWW6ITtClapziqQcGMrS5fNtZjVp3pZ0z_qWG1SJ0/"
 		class="footer__item link"><span class="hover-block" />(contact)</a
 	>
-	<a href="https://nostalgiabox.app" class="footer__item link"
-		><span class="hover-block" />(nostalgiabox)</a
-	>
-	<a href="https://syniasports.com" class="footer__item link"
-		><span class="hover-block" />(syniasports)</a
-	>
 	<p class="footer__item">c. {year}</p>
 </footer>
 
@@ -74,16 +68,6 @@
 					on:click={closeMenu}
 				>
 					(contact)
-				</a>
-				<a href="https://nostalgiabox.app" class="mobile-nav-link" on:click={closeMenu}>
-					(nostalgiabox)
-				</a>
-				<a
-					href="https://syniasports.com"
-					class="mobile-nav-link"
-					on:click={closeMenu}
-				>
-					(syniasports)
 				</a>
 				<p class="mobile-nav-link">c. {year}</p>
 			</div>
