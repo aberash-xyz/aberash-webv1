@@ -13,7 +13,7 @@
 	const SITE = 'https://www.aberash.xyz';
 	const TITLE = 'aberash.';
 	const DESCRIPTION = 'finding the beauty inbetween and building things that matter';
-	const OG_IMAGE = `${SITE}/og.png`;
+	const OG_IMAGE = `${SITE}/og.jpg`;
 
 	$: canonical = `${SITE}${$page.url.pathname}`;
 
@@ -76,9 +76,9 @@
 	<meta property="og:url" content={canonical} />
 	<meta property="og:image" content={OG_IMAGE} />
 	<meta property="og:image:secure_url" content={OG_IMAGE} />
-	<meta property="og:image:type" content="image/png" />
+	<meta property="og:image:type" content="image/jpeg" />
 	<meta property="og:image:width" content="2400" />
-	<meta property="og:image:height" content="1272" />
+	<meta property="og:image:height" content="1260" />
 	<meta property="og:image:alt" content={TITLE} />
 
 	<meta name="twitter:card" content="summary_large_image" />
