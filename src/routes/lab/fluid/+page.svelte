@@ -101,7 +101,7 @@
 	`;
 
 	onMount(() => {
-		hint = { ...hint, x: innerWidth / 2, y: innerHeight / 2, touch: matchMedia('(pointer: coarse)').matches };
+		hint = { show: true, x: innerWidth / 2, y: innerHeight / 2, touch: matchMedia('(pointer: coarse)').matches };
 		const renderer = new THREE.WebGLRenderer({ antialias: false });
 		renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 		renderer.autoClear = false;
@@ -242,7 +242,7 @@
 		// a few swirls so the page isn't empty before you touch it
 		for (let i = 0; i < 6; i++) {
 			const a = Math.random() * Math.PI * 2;
-			pending.push({ x: 0.3 + Math.random() * 0.4, y: 0.3 + Math.random() * 0.4, dx: Math.cos(a) * 1.5, dy: Math.sin(a) * 1.5 });
+			pending.push({ x: 0.3 + Math.random() * 0.4, y: 0.3 + Math.random() * 0.4, dx: Math.cos(a) * 7, dy: Math.sin(a) * 7 });
 		}
 		loop();
 
