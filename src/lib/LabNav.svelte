@@ -32,8 +32,8 @@
 	/* same (home) link as /mood: violet block wipes across on hover */
 	.home {
 		position: fixed;
-		top: 50%;
-		left: 62%;
+		top: var(--home-top, 50%);
+		left: var(--home-left, 62%);
 		transform: translateY(-50%);
 		overflow: hidden;
 		padding: 0.4rem 0.8rem;

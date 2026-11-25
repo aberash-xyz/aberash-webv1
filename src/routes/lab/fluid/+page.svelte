@@ -10,11 +10,10 @@
 	//   4. dye      — carry colour along the final velocity; that's what you see
 	import { onMount } from 'svelte';
 	import * as THREE from 'three';
+	import LabHint from '$lib/LabHint.svelte';
 	import LabNav from '$lib/LabNav.svelte';
 
 	let host;
-	// "move" hint at the pointer once it's been still long enough for the dye to fade out
-	let hint = { x: 0, y: 0, show: false, touch: false };
 
 	const vertexShader = /* glsl */ `
 		varying vec2 vUv;
@@ -101,7 +100,6 @@
 	`;
 
 	onMount(() => {
-		hint = { show: true, x: innerWidth / 2, y: innerHeight / 2, touch: matchMedia('(pointer: coarse)').matches };
 		const renderer = new THREE.WebGLRenderer({ antialias: false });
 		renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 		renderer.autoClear = false;
@@ -170,10 +168,7 @@
 		let last = null;
 		let hue = Math.random();
 		const color = new THREE.Color();
-		let idle = 0;
 		const onMove = (e) => {
-			idle = 0;
-			hint = { x: e.clientX, y: e.clientY, show: false, touch: e.pointerType !== 'mouse' };
 			const x = e.clientX / innerWidth;
 			const y = 1 - e.clientY / innerHeight;
 			if (last) {
@@ -206,8 +201,6 @@
 		const loop = () => {
 			raf = requestAnimationFrame(loop);
 			const dt = Math.min(clock.getDelta(), 1 / 30);
-			idle += dt;
-			if (idle > 5 && !hint.show) hint = { ...hint, show: true }; // dye is ~90% faded by now
 
 			// 1. advect velocity
 			run(mats.advect, { uVel: vel.read.texture, uSrc: vel.read.texture, uTexel: texel, uDt: dt, uKeep: Math.exp(-dt * 0.8) }, vel.write);
@@ -267,9 +260,8 @@
 </svelte:head>
 
 <div class="stage" bind:this={host}></div>
-<p class="hint" class:show={hint.show} style="left:{hint.x}px; top:{hint.y}px">
-	{hint.touch ? '(drag)' : '(move your mouse)'}
-</p>
+<!-- 5s: dye is ~90% faded by then -->
+<LabHint />
 <LabNav n={4} name="fluid" />
 <a class="credit" href="https://mofu-dev.com/en/blog/stable-fluids/" target="_blank" rel="noopener">after mofu-dev — stable fluids ↗</a>
 
@@ -281,22 +273,6 @@
 	}
 	.stage :global(canvas) {
 		display: block;
-	}
-	.hint {
-		position: fixed;
-		margin: 0;
-		transform: translate(-50%, calc(-100% - 1.6rem));
-		font-family: var(--font-mono);
-		font-size: 1.2rem;
-		color: rgba(242, 240, 234, 0.6);
-		white-space: nowrap;
-		pointer-events: none;
-		opacity: 0;
-		transition: opacity 0.25s ease;
-	}
-	.hint.show {
-		opacity: 1;
-		transition-duration: 1.2s;
 	}
 	.credit {
 		position: fixed;
